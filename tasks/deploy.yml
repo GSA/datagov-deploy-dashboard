@@ -81,23 +81,23 @@
   notify: supervisor reload
 
 - name: Enable campaign status cfo-act download cron
-  cron:
-    cron_file: dashboard
-    name: "campaign status cfo-act download cron job"
-    user: root
-    minute: 15
-    hour: 4
-    job: supervisorctl start dashboard-cfo-act-download > /dev/null
-    disabled: "{{ not crons_enabled }}"
-    state: present
+  cron: >-
+    cron_file=dashboard
+    name="campaign status cfo-act download cron job"
+    user=root
+    minute=15
+    hour=4
+    job="supervisorctl start dashboard-cfo-act-download > /dev/null"
+    disabled={{ not crons_enabled }}
+    state=present
 
 - name: Enable campaign status cfo-act full-scan cron
-  cron:
-    cron_file: dashboard
-    name: "campaign status cfo-act full-scan cron job"
-    user: root
-    minute: 30
-    hour: 4
-    job: supervisorctl start dashboard-cfo-act-full-scan > /dev/null
-    disabled: "{{ not crons_enabled }}"
-    state: present
+  cron: >-
+    cron_file=dashboard
+    name="campaign status cfo-act full-scan cron job"
+    user=root
+    minute=30
+    hour=4
+    job="supervisorctl start dashboard-cfo-act-full-scan > /dev/null"
+    disabled={{ not crons_enabled }}
+    state=present
