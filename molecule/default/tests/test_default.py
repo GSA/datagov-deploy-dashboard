@@ -124,8 +124,8 @@ def test_supervisor_conf(host):
     assert supervisor.user == 'root'
     assert supervisor.group == 'root'
     assert supervisor.mode == 0o644
-    assert supervisor.contains('program:dashboard-cfo-act-download')
-    assert supervisor.contains('program:dashboard-cfo-act-full-scan')
+    assert supervisor.contains('program:dashboard-campaign-status-download')
+    assert supervisor.contains('program:dashboard-campaign-status-full-scan')
     assert supervisor.contains('user=%s' % dashboard_user)
 
 
@@ -136,8 +136,10 @@ def test_cron(host):
     assert cron.user == 'root'
     assert cron.group == 'root'
     assert cron.mode == 0o644
-    assert cron.contains('supervisorctl start dashboard-cfo-act-download')
-    assert cron.contains('supervisorctl start dashboard-cfo-act-full-scan')
+    assert cron.contains(
+        'supervisorctl start dashboard-campaign-status-download')
+    assert cron.contains(
+        'supervisorctl start dashboard-campaign-status-full-scan')
 
 
 def test_nginx(host):
