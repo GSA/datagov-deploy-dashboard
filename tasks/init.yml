@@ -1,6 +1,15 @@
 ---
 # Dashboard prerequisites
+- name: Enable the PHP pcntl extension
+  copy:
+    content: |-
+      extension=pcntl.so
+    dest: /etc/php/{{ dashboard_php_major_minor_version }}/fpm/conf.d/20-pcntl.ini
+    owner: root
+    group: root
+    mode: 0644
 
+# Dashboard prerequisites
 - name: Copying Dashboard configuration for Nginx
   template:
     src: "dashboard.nginx.conf"
