@@ -7,3 +7,4 @@
       cron_to_emails: team@example.com
       default_email_from: team@example.com
       dashboard_php_major_minor_version: "7.3"
+      project_git_version: d6685083b974fc3ba01fcfa7109e51c837b402ff
