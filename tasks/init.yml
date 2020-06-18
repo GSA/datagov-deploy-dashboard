@@ -17,26 +17,6 @@
   notify:
     - reload nginx
 
-# TODO use the host tls certificate
-- name: Copy SAML crt
-  copy:
-    content: |-
-      {{ saml2_sp_public_certificate }}
-    dest: "{{ saml_sp_cert_path }}"
-    owner: root
-    group: ssl-cert
-    mode: 0644
-
-# TODO use the host tls key
-- name: Copy SAML key
-  copy:
-    content: |-
-      {{ saml2_sp_private_key }}
-    dest: "{{ saml_sp_private_key_path }}"
-    owner: root
-    group: ssl-cert
-    mode: 0640
-
 - name: Installing required packages
   package: name={{ item }} state=present
   with_items:

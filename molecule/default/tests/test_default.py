@@ -65,58 +65,6 @@ def test_log_dir(host):
     assert log_dir.group == dashboard_user
 
 
-def test_saml2_certificate(host):
-    # TODO re-use the host certificate
-    certificate = host.file('/etc/dashboard-saml-sp-cert.crt')
-
-    assert certificate.exists
-    assert certificate.user == 'root'
-    assert certificate.group == 'ssl-cert'
-    assert certificate.mode == 0o644
-
-
-def test_saml2_key(host):
-    # TODO re-use the host tls key
-    key = host.file('/etc/dashboard-saml-sp-private.pem')
-
-    assert key.exists
-    assert key.user == 'root'
-    assert key.group == 'ssl-cert'
-    assert key.mode == 0o640
-
-
-def test_saml2_authsources(host):
-    authsources = host.file(
-        '%s/vendor/simplesamlphp/simplesamlphp'
-        '/config/authsources.php' % dashboard_app_dir
-    )
-
-    assert authsources.exists
-    assert authsources.user == dashboard_user
-    assert authsources.group == 'www-data'
-    assert authsources.mode == 0o640
-
-    assert authsources.contains(
-        "$base_url = 'https://labs.data.gov/dashboard';"
-    )
-
-
-def test_saml2_config(host):
-    config = host.file(
-        '%s/vendor/simplesamlphp/simplesamlphp'
-        '/config/config.php' % dashboard_app_dir
-    )
-
-    assert config.exists
-    assert config.user == dashboard_user
-    assert config.group == 'www-data'
-    assert config.mode == 0o640
-
-    assert config.contains(
-        "'auth.adminpassword' => 'admin_pass',"
-    )
-
-
 def test_supervisor_conf(host):
     supervisor = host.file('/etc/supervisor/conf.d/dashboard.conf')
 
