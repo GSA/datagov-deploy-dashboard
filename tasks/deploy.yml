@@ -41,24 +41,6 @@
   become: true
   become_user: "{{ dashboard_user }}"
 
-- name: Copying SAML config files
-  template:
-    src: "{{ item }}"
-    dest: "{{ project_source_new_code_path }}/vendor/simplesamlphp/simplesamlphp/config/{{ item | basename }}"
-    owner: "{{ dashboard_user }}"
-    group: www-data
-    mode: "0640"
-  with_fileglob:
-    - ../templates/saml/config/*.php
-
-- name: Copying SAML metadata files
-  template:
-    src: "saml/metadata/{{ saml2_idp_entry }}/saml20-idp-remote.php"
-    dest: "{{ project_source_new_code_path }}/vendor/simplesamlphp/simplesamlphp/metadata/saml20-idp-remote.php"
-    owner: "{{ dashboard_user }}"
-    group: "{{ dashboard_user }}"
-    mode: "0644"
-
 - name: Adding .env
   template:
     src: "env.j2"

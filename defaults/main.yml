@@ -38,19 +38,6 @@ default_host: 'labs.data.gov/dashboard'
 env_content_protocol: http
 real_ansible_env: local
 
-# SAML
-saml2_idp_entry: "login.test.max.gov"
-saml_sp_private_key_path: /etc/dashboard-saml-sp-private.pem
-saml_sp_cert_path: /etc/dashboard-saml-sp-cert.crt
-saml2_sp_public_certificate: "add-yours-to-inventory"
-saml2_sp_private_key: "add-yours-to-inventory"
-
-# TODO these should not be defaults and silently fail when they are
-# misconfigured. Instead, make them required by testing for them within the
-# tasks.
-saml_sp_private_key: "private_key"
-saml_admin_pass: "admin_pass"
-
 # List of CodeIgniter pre-approved admin emails
 codeigniter_pre_approved_admins: []
 env_encryption_key: some-key
