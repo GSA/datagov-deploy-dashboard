@@ -77,6 +77,12 @@ def test_supervisor_conf(host):
     assert supervisor.contains('user=%s' % dashboard_user)
 
 
+def test_pcntl_available(host):
+    cmd = host.run('php -m | grep pcntl')
+
+    assert cmd.stdout == 'pcntl\n'
+
+
 def test_cron(host):
     cron = host.file('/etc/cron.d/dashboard')
 
