@@ -14,7 +14,7 @@ autorestart=false
 autostart=false
 user=ubuntu
 
-[program:dashboard-campaign-status-long-crawl]
+[program:dashboard-campaign-status-long-running]
 command=/usr/bin/php {{ current_source_symlink }}/public/index.php campaign status long_running full-scan
 stdout_logfile=/var/log/dashboard/campaign-status-full-scan.log
 redirect_stderr=true
