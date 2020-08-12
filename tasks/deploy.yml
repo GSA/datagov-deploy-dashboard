@@ -83,3 +83,14 @@
     job="supervisorctl start dashboard-campaign-status-full-scan > /dev/null"
     disabled={{ not crons_enabled }}
     state=present
+
+- name: Enable campaign status long-running full-scan cron
+  cron: >-
+    cron_file=dashboard
+    name="campaign status long-running full-scan cron job"
+    user=root
+    minute=30
+    hour=4
+    job="supervisorctl start dashboard-campaign-status-long-crawl > /dev/null"
+    disabled={{ not crons_enabled }}
+    state=present
