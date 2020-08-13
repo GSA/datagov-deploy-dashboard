@@ -91,6 +91,8 @@
     user=root
     minute=30
     hour=4
+    day=1
+    month=1,4,7,10
     job="supervisorctl start dashboard-campaign-status-long-running > /dev/null"
     disabled={{ not crons_enabled }}
     state=present
