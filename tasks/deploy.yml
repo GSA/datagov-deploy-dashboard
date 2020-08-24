@@ -106,4 +106,3 @@
     job="supervisorctl start dashboard-campaign-status-long-running > /dev/null"
     disabled={{ not crons_enabled }}
     state=present
-    
