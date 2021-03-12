@@ -10,7 +10,7 @@ dashboard_user: ubuntu
 
 # Composer
 project_git_repo: https://github.com/project-open-data/project-open-data-dashboard.git
-project_git_version: master
+project_git_version: main
 
 # Project path
 project_source_rollback_path: /var/www/dashboard/rollback
