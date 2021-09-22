@@ -36,6 +36,7 @@
           - git
           - ssl-cert
           - supervisor
+          - iproute2
 
     - name: Install TLS host certificate
       copy:
