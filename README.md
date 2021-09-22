@@ -20,9 +20,9 @@ composer. Add this role and its dependencies to your requirements.yml file.
   name: gsa.datagov-deploy-dashboard
 - src: geerlingguy.composer
 - src: geerlingguy.git
-- src: geerlingguy.nginx
 - src: geerlingguy.php
 - src: geerlingguy.php-versions
+- src: nginxinc.nginx
 ```
 
 Install with ansible-galaxy.
@@ -36,10 +36,10 @@ Example playbook.
 - name: install dashboard
   roles:
     - role: geerlingguy.git
-    - role: geerlingguy.nginx
     - role: geerlingguy.php-versions
     - role: geerlingguy.php
     - role: geerlingguy.composer
+    - role: nginxinc.nginx
     - role: gsa.datagov-deploy-dashboard
 ```
 

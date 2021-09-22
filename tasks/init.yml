@@ -6,7 +6,7 @@
 - name: Copying Dashboard configuration for Nginx
   template:
     src: "dashboard.nginx.conf"
-    dest: "/etc/nginx/sites-enabled/dashboard.nginx.conf"
+    dest: "/etc/nginx/conf.d/default.conf"
   notify:
     - reload nginx
 
@@ -15,7 +15,6 @@
   with_items:
     - mariadb-client
     - php{{ dashboard_php_major_minor_version }}-zip
-    - nginx-extras
 
 - name: Remove old rollback code
   file: path="{{ project_source_rollback_path }}" state=absent

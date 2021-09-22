@@ -15,16 +15,14 @@
 
   roles:
     - role: geerlingguy.git
-    - role: geerlingguy.nginx
-      nginx_remove_default_vhost: true
-      nginx_ppa_use: true
-      nginx_ppa_version: stable
-      nginx_extra_conf_options: |-
-        include /etc/nginx/modules-enabled/*.conf;
     - role: geerlingguy.php-versions
     - role: geerlingguy.php
       php_webserver_daemon: nginx
     - role: geerlingguy.composer
+    - role: nginxinc.nginx
+      vars:
+        nginx_branch: stable
+        nginx_state: latest
 
   tasks:
     - name: Create ubuntu user
@@ -38,6 +36,7 @@
           - git
           - ssl-cert
           - supervisor
+          - iproute2
 
     - name: Install TLS host certificate
       copy:
